@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CityrouterApplication {
+public class CityRouterApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CityrouterApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CityRouterApplication.class, args);
+    }
 
 }
