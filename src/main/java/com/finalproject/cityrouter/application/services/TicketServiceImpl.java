@@ -5,6 +5,8 @@ import com.finalproject.cityrouter.application.exceptions.NotEnoughMoneyExceptio
 import com.finalproject.cityrouter.application.models.Ticket;
 import com.finalproject.cityrouter.persistence.repositories.TicketRepository;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -15,14 +17,20 @@ import static com.finalproject.cityrouter.application.Validator.validateTicket;
 @AllArgsConstructor
 class TicketServiceImpl implements TicketService {
 
+    private static final Logger logger = LoggerFactory.getLogger(TicketServiceImpl.class);
+
     private final TicketRepository ticketRepository;
 
     @Override
     public BigDecimal buyTicket(Ticket ticket, BigDecimal travellerAmount) {
+
+        logger.info("buyTicket method is called. Details: {}, {}", ticket, travellerAmount);
+
         validateTicket(ticket);
         BigDecimal moneyDifference = travellerAmount.subtract(ticket.getPrice().getValue());
 
         if (moneyDifference.compareTo(BigDecimal.ZERO) < 0) {
+            logger.error("Not enough money");
             throw new NotEnoughMoneyException(moneyDifference.abs());
         }
 
