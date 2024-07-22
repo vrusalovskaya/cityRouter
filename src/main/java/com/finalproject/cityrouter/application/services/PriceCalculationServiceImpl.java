@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
+/**
+ * Implementation of the {@link PriceCalculationService} that calculates the price based on the number of segments.
+ */
 @Service
 class PriceCalculationServiceImpl implements PriceCalculationService {
 

@@ -7,13 +7,29 @@ import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 
-public class Validator {
+/**
+ * Utility class for validating {@link Ticket} and {@link Price} objects.
+ * <p>
+ * This class provides static methods for validating tickets and prices to ensure they meet the required constraints.
+ * It is designed to be used across the application wherever validation of these objects is needed.
+ * </p>
+ */
+public class TicketValidator {
 
-    private static final Logger logger = LoggerFactory.getLogger(Validator.class);
+    private static final Logger logger = LoggerFactory.getLogger(TicketValidator.class);
 
-    private Validator() {
+    /**
+     * Private constructor to prevent instantiation of the utility class.
+     */
+    private TicketValidator() {
     }
 
+    /**
+     * Validates the specified {@code Ticket} object.
+     *
+     * @param ticket the {@code Ticket} object to be validated
+     * @throws IllegalArgumentException if the ticket or any of its fields are invalid
+     */
     public static void validateTicket(Ticket ticket) {
         if (ticket == null) {
             logger.error("Ticket is null");
@@ -38,6 +54,21 @@ public class Validator {
         }
     }
 
+    /**
+     * Validates the specified {@code Price} object.
+     * <p>
+     * This method performs the following checks:
+     * <ul>
+     *     <li>Ensures the price is not null.</li>
+     *     <li>Checks that the price value is not null and is greater than zero.</li>
+     *     <li>Ensures the currency is not null.</li>
+     * </ul>
+     * If any of these conditions are not met, an {@link IllegalArgumentException} is thrown.
+     * </p>
+     *
+     * @param price the {@code Price} object to be validated
+     * @throws IllegalArgumentException if the price or any of its fields are invalid
+     */
     private static void validatePrice(Price price) {
         if (price == null) {
             logger.error("Price is null");

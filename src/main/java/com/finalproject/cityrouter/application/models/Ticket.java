@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * Represents a ticket in the City Router system.
+ */
 @Getter
 @AllArgsConstructor
 @ToString

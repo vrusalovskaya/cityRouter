@@ -11,8 +11,11 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
-import static com.finalproject.cityrouter.application.Validator.validateTicket;
+import static com.finalproject.cityrouter.application.TicketValidator.validateTicket;
 
+/**
+ * Implementation of the {@link TicketService} that handles the purchase of tickets.
+ */
 @Service
 @AllArgsConstructor
 class TicketServiceImpl implements TicketService {

@@ -19,6 +19,9 @@ import java.math.BigDecimal;
 import static com.finalproject.cityrouter.presentation.Validator.isValidCity;
 import static com.finalproject.cityrouter.presentation.Validator.isValidCurrency;
 
+/**
+ * REST controller for handling ticket-related requests in the City Router application.
+ */
 @RestController
 @RequestMapping("/api/v1")
 @AllArgsConstructor
@@ -28,6 +31,12 @@ public class TicketController {
 
     private final TicketService ticketService;
 
+    /**
+     * Handles the HTTP POST request to save a ticket purchase request.
+     *
+     * @param ticketToSave the ticket details to be saved
+     * @return a {@link ResponseEntity} containing the ticket purchase result or an error message
+     */
     @PostMapping("/tickets")
     public ResponseEntity<TicketResponseDto> saveTicket(@RequestBody SaveTicketRequestDto ticketToSave) {
 

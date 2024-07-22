@@ -6,6 +6,9 @@ import lombok.ToString;
 
 import java.math.BigDecimal;
 
+/**
+ * Represents the price in the City Router system.
+ */
 @Getter
 @AllArgsConstructor
 @ToString

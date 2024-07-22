@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * Represents information about a route in the City Router system.
+ */
 @Getter
 @AllArgsConstructor
 @ToString

@@ -8,6 +8,9 @@ import lombok.ToString;
 
 import java.math.BigDecimal;
 
+/**
+ * Entity class representing a ticket in the database.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
