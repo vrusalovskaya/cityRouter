@@ -6,8 +6,7 @@ import com.finalproject.cityrouter.application.services.RouteCalculationService;
 import com.finalproject.cityrouter.presentation.Mapper;
 import com.finalproject.cityrouter.presentation.dtos.RouteInfoDto;
 import lombok.AllArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,9 +24,8 @@ import static com.finalproject.cityrouter.presentation.Validator.isValidCity;
 @RestController
 @RequestMapping("/api/v1")
 @AllArgsConstructor
+@Slf4j
 public class RouteController {
-
-    private static final Logger logger = LoggerFactory.getLogger(RouteController.class);
 
     private final RouteCalculationService routeCalculationService;
 
@@ -35,7 +33,7 @@ public class RouteController {
      * Handles the HTTP GET request to calculate route information between two cities.
      *
      * @param departure the name of the departure city
-     * @param arrival the name of the arrival city
+     * @param arrival   the name of the arrival city
      * @return a {@link ResponseEntity} containing the route information or an error message
      */
     @GetMapping("/route")
@@ -51,7 +49,7 @@ public class RouteController {
                 City.valueOf(departure.toUpperCase()),
                 City.valueOf(arrival.toUpperCase()));
 
-        logger.info("Route was successfully constructed");
+        log.info("Route was successfully constructed");
         return ResponseEntity.ok(Mapper.toDto(routeInfo));
     }
 }

@@ -6,8 +6,7 @@ import com.finalproject.cityrouter.presentation.Mapper;
 import com.finalproject.cityrouter.presentation.dtos.SaveTicketRequestDto;
 import com.finalproject.cityrouter.presentation.dtos.TicketResponseDto;
 import lombok.AllArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,9 +24,8 @@ import static com.finalproject.cityrouter.presentation.Validator.isValidCurrency
 @RestController
 @RequestMapping("/api/v1")
 @AllArgsConstructor
+@Slf4j
 public class TicketController {
-
-    private static final Logger logger = LoggerFactory.getLogger(TicketController.class);
 
     private final TicketService ticketService;
 
@@ -48,10 +46,10 @@ public class TicketController {
 
         try {
             BigDecimal change = ticketService.buyTicket(Mapper.toModel(ticketToSave), ticketToSave.getTravellerAmount());
-            logger.info("Ticket was successfully bought");
+            log.info("Ticket was successfully bought");
             return ResponseEntity.ok(TicketResponseDto.createSuccess(change, ticketToSave.getCurrency()));
         } catch (NotEnoughMoneyException e) {
-            logger.info("Unable to buy ticket: not enough money");
+            log.info("Unable to buy ticket: not enough money");
             return ResponseEntity.badRequest().body(TicketResponseDto.createFailure(e.getAmountLacked(), ticketToSave.getCurrency()));
         }
     }

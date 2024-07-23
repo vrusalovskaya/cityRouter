@@ -2,16 +2,14 @@ package com.finalproject.cityrouter.presentation;
 
 import com.finalproject.cityrouter.application.models.City;
 import com.finalproject.cityrouter.application.models.Currency;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 
 /**
  * Utility class for validating input values in the City Router application.
  */
+@Slf4j
 public class Validator {
-
-    private static final Logger logger = LoggerFactory.getLogger(Validator.class);
 
     /**
      * Private constructor to prevent instantiation of the utility class.
@@ -30,7 +28,7 @@ public class Validator {
             City.valueOf(passedCity.toUpperCase());
             return true;
         } catch (IllegalArgumentException e) {
-            logger.error("Failed to validate: city. Passed value: {}", passedCity);
+            log.error("Failed to validate: city. Passed value: {}", passedCity);
             return false;
         }
     }
@@ -46,7 +44,7 @@ public class Validator {
             Currency.valueOf(passedCurrency.toUpperCase());
             return true;
         } catch (IllegalArgumentException e) {
-            logger.error("Failed to validate: currency. Passed value: {}", passedCurrency);
+            log.error("Failed to validate: currency. Passed value: {}", passedCurrency);
             return false;
         }
     }
