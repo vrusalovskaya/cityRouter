@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class RouteInfoDto {
-    private int segments;
+    private Integer segments;
     private BigDecimal price;
     private Currency currency;
     private String error;

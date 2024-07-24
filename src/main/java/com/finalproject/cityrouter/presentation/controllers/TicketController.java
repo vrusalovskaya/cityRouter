@@ -5,6 +5,7 @@ import com.finalproject.cityrouter.application.services.TicketService;
 import com.finalproject.cityrouter.presentation.Mapper;
 import com.finalproject.cityrouter.presentation.dtos.SaveTicketRequestDto;
 import com.finalproject.cityrouter.presentation.dtos.TicketResponseDto;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,7 @@ import static com.finalproject.cityrouter.presentation.Validator.isValidCurrency
 @RequestMapping("/api/v1")
 @AllArgsConstructor
 @Slf4j
+@SecurityRequirement(name = "basicAuth")
 public class TicketController {
 
     private final TicketService ticketService;
